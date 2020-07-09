@@ -24,8 +24,8 @@ public class Steps extends DriverInit{
 		ResultadoBusca rb = new ResultadoBusca(driver);
 		Produto prd = new Produto(driver);
 		
-		Assert.assertTrue(rb.obter_resultado().contains(item.toUpperCase()));
-		rb.ver_detalhes();
+		Assert.assertTrue(rb.obterResultado().contains(item.toUpperCase()));
+		rb.verDetalhes();
 		prd.selecionar_cor_e_ir_ao_carrinho(cor);
 	}
 
@@ -37,13 +37,13 @@ public class Steps extends DriverInit{
 		Assert.assertTrue(car.obterNome(item).contains(item) || car.obterNome(item).equalsIgnoreCase(item));
 		Assert.assertEquals(car.obterPreco(item), preco);
 		
-		Assert.assertEquals(car.somar_valores_individuais(), car.obter_total());
+		Assert.assertEquals(car.somarValoresIndividuais(), car.obterTotal());
 	}
 
 	@Então("^verifica que o item procurado não existe e que uma mensagem contendo \"([^\"]*)\" é exibida$")
 	public void verifica_que_o_item_procurado_não_existe_e_que_uma_mensagem_contendo_é_exibida(String erro) throws Throwable {
 		ResultadoBusca rb = new ResultadoBusca(driver);
-		Assert.assertTrue(rb.obter_msg_de_erro().contains(erro));
+		Assert.assertTrue(rb.obterErro().contains(erro));
 	}
 	
 }

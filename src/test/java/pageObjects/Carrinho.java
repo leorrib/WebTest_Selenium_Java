@@ -6,11 +6,17 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Carrinho {
 	
 	By valor = By.id("total_product");
 	By valor_ind = By.cssSelector("span span[class='price']");
+	By nome;
+	By preco;
+	By quantidade;
+	
 	
 	public WebDriver driver;
     
@@ -18,11 +24,11 @@ public class Carrinho {
 		this.driver = driver;
 	}
 	
-	public float obter_total() {
+	public float obterTotal() {
 		return Float.parseFloat(driver.findElement(valor).getText().substring(1));
 	}
 	
-	public float somar_valores_individuais() {
+	public float somarValoresIndividuais() {
 		List<WebElement> lista_de_valores = driver.findElements(valor_ind);
 		float sum = 0;
 		for (int i = 0; i < lista_de_valores.size(); i++) {
@@ -32,22 +38,24 @@ public class Carrinho {
 		return Float.parseFloat(df.format(sum));
 	}
 	
-	private String cap_nome(String item) {
+	private String capNome(String item) {
 		return item.substring(0, 1).toUpperCase() + item.substring(1).toLowerCase();
 	}
 	
 	public String obterNome(String item) {
-		By nome = By.xpath("//td //a[text()[contains(.,'" + cap_nome(item) + "')]]");
+		nome = By.xpath("//td //a[text()[contains(.,'" + capNome(item) + "')]]");
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.visibilityOfElementLocated(nome));
 		return driver.findElement(nome).getText().toUpperCase();
 	}
 	
 	public String obterPreco(String item) {
-		By preco = By.xpath("//a[text()[contains(.,'"+ cap_nome(item) +"')]]/../../following-sibling::td[2] //* //span");
+		preco = By.xpath("//a[text()[contains(.,'"+ capNome(item) +"')]]/../../following-sibling::td[2] //* //span");
 		return driver.findElement(preco).getText().toString();
 	}
 	
 	public String obterQuantidade(String item) {
-		By quantidade = By.xpath(("//a[text()[contains(.,'" + cap_nome(item) + "')]]/../../following-sibling::td[3] //input[1]"));
+		quantidade = By.xpath(("//a[text()[contains(.,'" + capNome(item) + "')]]/../../following-sibling::td[3] //input[1]"));
 		return driver.findElement(quantidade).getAttribute("value");
 	}
 	

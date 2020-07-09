@@ -17,15 +17,19 @@ public class ResultadoBusca {
 		this.driver = driver;
 	}
 	
-	public String obter_resultado() {
+	public String obterResultado() {
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.visibilityOfElementLocated(resultText));
 		return driver.findElement(resultText).getText().toUpperCase();
 	}
 	
-	public void ver_detalhes() {
+	public void verDetalhes() {
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.elementToBeClickable(image));
 		driver.findElement(image).click();
 	}
 	
-	public String obter_msg_de_erro() {
+	public String obterErro() {
 		WebDriverWait w = new WebDriverWait(driver, 10);
 		w.until(ExpectedConditions.visibilityOfElementLocated(erro));
 		return driver.findElement(erro).getText();

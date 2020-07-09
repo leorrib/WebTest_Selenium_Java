@@ -26,10 +26,14 @@ public class Produto {
 	}
 	
 	private void adicionar_ao_carrinho() {
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.elementToBeClickable(add_cart));
 		driver.findElement(add_cart).click();
 	}
 	
 	private void proceder_ao_carrinho() {
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.elementToBeClickable(proceed_cart));
 		driver.findElement(proceed_cart).click();
 	}
 	

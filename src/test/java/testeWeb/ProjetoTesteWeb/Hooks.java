@@ -17,11 +17,11 @@ public class Hooks extends DriverInit {
 	
 	@BeforeTest
 	public void paginaInicial() {
-		driver.get("http://automationpractice.com/");
+		driver.get(prop.getProperty("url"));
 	}
 	
 	@AfterSuite
 	public void fecharDriver() throws IOException {
-		driver.close();
+		driver.quit();
 	}
 }
