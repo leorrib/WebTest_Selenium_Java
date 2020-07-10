@@ -45,7 +45,6 @@ public class DriverInit {
 			
 			OperaOptions oopth = new OperaOptions();
 			oopth.addArguments("--start-maximized");
-			oopth.addArguments("user-agent=mrbean");
 
 			driver = new OperaDriver(oopth);
 			break;

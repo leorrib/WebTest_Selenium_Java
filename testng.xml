@@ -3,7 +3,7 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="testeWeb.ProjetoTesteWeb.Hooks" />
+			<class name="hooks.Hooks" />
 			<class name="cucumberOptions.TestRunner" />
 		</classes>
 	</test> <!-- Test -->

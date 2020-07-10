@@ -13,8 +13,15 @@ Neste cenário, um usuário digita "inexistente" no campo de busca e confere se 
 - Obs:
 Eu optei por usar localizadores xpath (mesmo estes sendo mais lento que os css) pois eles permitem a passagem de filho para pai. Com isso, a análise do carrinho é executada de forma mais limpa, de modo que os localizadores de preço/quantidade estão vinculados apenas ao nome do item correspondente. Dessa forma, a adição de novos itens ao carrinho e sua posterior análise torna-se simples e a automação passa a ser mais abrangente.
 
-## Como executar
-No diretório do arquivo pom.xml, use o comando "mvn test verify". Isto executará o teste e gerará relatórios em html no diretório target/cucumber-html-reports. O navegador pode ser selecionado no arquivo 'src\main\java\resources\Data.properties'. As opções são: chrome, firefox e opera (upper ou lower case não influenciam).
+## Como executar o teste
+- Escolha o browser desejado no arquivo 'src\main\java\resources\Data.properties'. As opções são: chrome, firefox e opera (upper ou lower case não influenciam).
+- Abra o terminal e execute o comando 'mvn test' para rodar todos os testes.
+
+## Como gerar relatórios em HTML
+- Escolha o browser desejado no arquivo 'src\main\java\resources\Data.properties'. As opções são: chrome, firefox e opera (upper ou lower case não influenciam).
+- Abra o terminal e execute o comando 'mvn test verify'. Isto executará o teste e gerará relatórios em html no diretório target/cucumber-html-reports.
 
 ## Requerimentos
-- maven.
+- Java (configurar as variáveis de ambiente).
+- Maven (configurar as variáveis de ambiente).
+- Browser (chrome, opera e/ou firefox. Os drivers correspondentes para Windows estão incluídos no projeto, na pasta 'drivers').

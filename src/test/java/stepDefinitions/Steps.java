@@ -10,7 +10,7 @@ import pageObjects.Produto;
 import pageObjects.ResultadoBusca;
 import resources.DriverInit;
 
-public class Steps extends DriverInit{
+public class Steps extends DriverInit {
 	
 	@Dado("^que o usuário pesquisa por \"([^\"]*)\" na página inicial$")
 	public void que_o_usuário_pesquisa_por_na_página_inicial(String item) throws Throwable {
@@ -26,7 +26,7 @@ public class Steps extends DriverInit{
 		
 		Assert.assertTrue(rb.obterResultado().contains(item.toUpperCase()));
 		rb.verDetalhes();
-		prd.selecionar_cor_e_ir_ao_carrinho(cor);
+		prd.selecionarCorIrCarrinho(cor);
 	}
 
 	@Então("^verifica que \"([^\"]*)\" item \"([^\"]*)\", com o preço \"([^\"]*)\", foi adicionado e confere a soma total$")
